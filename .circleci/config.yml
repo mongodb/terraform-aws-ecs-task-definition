@@ -1,27 +1,37 @@
+commands:
+  terraform:
+    description: Download Terraform
+    steps:
+      - run:
+          command: |
+            wget -O terraform.zip https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip
+            sudo unzip -d /usr/local/bin terraform.zip
 jobs:
   build:
     docker:
-      - image: hashicorp/terraform:0.11.11
-        environment:
-          TERRAFORM_VERSION: v0.11
+      - image: circleci/golang:1.11-stretch-browsers-legacy
     steps:
       - checkout
+      - terraform
       - run:
           command: terraform init
+    working_directory: /go/src/github.com/mongodb/terraform-aws-ecs-task-definition
   test:
     docker:
-      - image: hashicorp/terraform:0.11.11
-        environment:
-          TERRAFORM_VERSION: v0.11
+      - image: circleci/golang:1.11-stretch-browsers-legacy
     steps:
       - checkout
+      - terraform
       - run:
           command: |
             terraform init
             terraform fmt -check=true
             terraform validate
+
+            dep ensure
             go test -v ./...
-version: 2
+    working_directory: /go/src/github.com/mongodb/terraform-aws-ecs-task-definition
+version: 2.1
 workflows:
   build-test:
     jobs:
