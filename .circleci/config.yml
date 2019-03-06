@@ -11,10 +11,13 @@ jobs:
   test:
     docker:
       - image: hashicorp/terraform:0.11.11
+        environment:
+          TERRAFORM_VERSION: v0.11
     steps:
       - checkout
       - run:
           command: |
+            terraform init
             terraform fmt -check=true
             terraform validate
             go test -v ./...
