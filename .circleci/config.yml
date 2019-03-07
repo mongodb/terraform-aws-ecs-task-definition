@@ -31,12 +31,45 @@ jobs:
             dep ensure
             go test -v ./...
     working_directory: /go/src/github.com/mongodb/terraform-aws-ecs-task-definition
+  deploy:
+    docker:
+      - image: circleci/golang:1.11-stretch-browsers-legacy
+    steps:
+      - checkout
+      - run:
+          command: |
+            go get github.com/tcnksm/ghr
+            VERSION="$(git tag -l | head -1)"
+            ghr -t "${GITHUB_TOKEN}" -u "${CIRCLE_PROJECT_USERNAME}" -r "${CIRCLE_PROJECT_REPONAME}" -c "${CIRCLE_SHA1}" -delete "${VERSION}" .
 version: 2.1
 workflows:
-  build-test:
+  build-test-deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            tags:
+              only: /.*/
       - test:
+          filters:
+            tags:
+              only: /.*/
           requires:
             - build
+      - pause:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
+          requires:
+            - test
+          type: approval
+      - deploy:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
+          requires:
+            - pause
   version: 2
