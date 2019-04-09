@@ -1,0 +1,13 @@
+repos:
+  - hooks:
+      - id: terraform_docs
+      - id: terraform_fmt
+    repo: https://github.com/antonbabenko/pre-commit-terraform.git
+    rev: v1.11.0
+
+  - hooks:
+      - id: go-fmt
+      - id: go-lint
+        exclude: vendor
+    repo: https://github.com/dnephin/pre-commit-golang.git
+    rev: v0.3.3

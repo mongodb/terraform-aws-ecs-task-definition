@@ -1,75 +1,64 @@
-commands:
-  terraform:
-    description: Download Terraform
-    steps:
-      - run:
-          command: |
-            wget -O terraform.zip https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip
-            sudo unzip -d /usr/local/bin terraform.zip
 jobs:
-  build:
+  pre-commit:
     docker:
-      - image: circleci/golang:1.11-stretch-browsers-legacy
+      - image: quay.io/mongodb-build/terratest
     steps:
       - checkout
-      - terraform
-      - run:
-          command: terraform init
-    working_directory: /go/src/github.com/mongodb/terraform-aws-ecs-task-definition
+      - restore_cache:
+          key: v1-venv
+      - run: |
+          virtualenv venv
+          . venv/bin/activate
+
+          pip install pre-commit
+          pre-commit install
+          pre-commit run --all-files
+      - save_cache:
+          key: v1-venv
+          paths:
+            - venv
   test:
     docker:
-      - image: circleci/golang:1.11-stretch-browsers-legacy
+      - image: quay.io/mongodb-build/terratest
     steps:
       - checkout
-      - terraform
-      - run:
-          command: |
-            terraform init
-            terraform fmt -check=true
-            terraform validate
-
-            dep ensure
-            go test -v ./...
-    working_directory: /go/src/github.com/mongodb/terraform-aws-ecs-task-definition
+      - restore_cache:
+          key: gopkg-{{ checksum "Gopkg.lock" }}
+      - run: |
+          dep ensure
+          go test -timeout 30m -v ./...
+      - save_cache:
+          key: gopkg-{{ checksum "Gopkg.lock" }}
+          paths:
+            - vendor
+    working_directory: /go/src/github.com/10gen/terraform-mongohouse
   deploy:
     docker:
-      - image: circleci/golang:1.11-stretch-browsers-legacy
+      - image: circleci/node:8
     steps:
       - checkout
-      - run:
-          command: |
-            go get github.com/tcnksm/ghr
-            VERSION="$(git tag -l | head -1)"
-            ghr -t "${GITHUB_TOKEN}" -u "${CIRCLE_PROJECT_USERNAME}" -r "${CIRCLE_PROJECT_REPONAME}" -c "${CIRCLE_SHA1}" -delete "${VERSION}" .
-version: 2.1
+      - restore_cache:
+          key: v1-npm
+      - run: |
+          sudo npm install @semantic-release/changelog -D
+          sudo npm install @semantic-release/git -D
+          npx semantic-release
+      - save_cache:
+          key: v1-npm
+          paths:
+            - node_modules
+version: 2.0
 workflows:
-  build-test-deploy:
+  pre-commit-test-deploy:
     jobs:
-      - build:
-          filters:
-            tags:
-              only: /.*/
+      - pre-commit
       - test:
-          filters:
-            tags:
-              only: /.*/
           requires:
-            - build
-      - pause:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
-          requires:
-            - test
-          type: approval
+            - pre-commit
       - deploy:
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
+              only: master
           requires:
-            - pause
+            - test
   version: 2
