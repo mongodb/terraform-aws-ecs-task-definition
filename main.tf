@@ -84,7 +84,7 @@ locals {
   # re2 ASCII character classes
   # https://github.com/google/re2/wiki/Syntax
   classes = {
-    digit = "/\"([[:digit:]]+)\"/"
+    digit = "/\"(-[[:digit:]]|[[:digit:]]+)\"/"
   }
 
   container_definitions = "${replace(data.template_file.container_definitions.rendered, "/\"(null)\"/", "$1")}"
