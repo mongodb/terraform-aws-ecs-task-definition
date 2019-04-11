@@ -142,4 +142,6 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
   requires_compatibilities = "${var.requires_compatibilities}"
   task_role_arn            = "${var.task_role_arn}"
   volume                   = "${var.volumes}"
+
+  count = "${var.register_task_definition ? 1 : 0}"
 }
