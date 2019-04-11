@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v1.0.1...v1.1.0) (2019-04-11)
+
+
+### Features
+
+* Add register_task_definition input ([430b1bf](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/430b1bf))
+
 ## [1.0.1](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v1.0.0...v1.0.1) (2019-04-09)
 
 
