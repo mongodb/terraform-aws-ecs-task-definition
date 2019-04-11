@@ -175,6 +175,11 @@ variable "readonlyRootFilesystem" {
   description = "When this parameter is true, the container is given read-only access to its root file system"
 }
 
+variable "register_task_definition" {
+  default     = true
+  description = "Registers a new task definition from the supplied family and containerDefinitions"
+}
+
 variable "repositoryCredentials" {
   default     = {}
   description = "The private repository authentication credentials to use"
