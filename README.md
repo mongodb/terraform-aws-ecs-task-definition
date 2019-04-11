@@ -95,8 +95,6 @@ Invoking the commands defined below creates an ECS task definition with the foll
 ]
 ```
 
-## Inputs
-
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
