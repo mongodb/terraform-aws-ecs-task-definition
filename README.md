@@ -11,6 +11,7 @@
 - [Inputs](#inputs)
 - [Outputs](#outputs)
 - [Testing](#testing)
+- [License](#license)
 
 ## Motivation
 
@@ -163,3 +164,7 @@ This module uses [Terratest](https://github.com/gruntwork-io/terratest), a Go li
 
     $ dep ensure
     $ go test -v ./...
+
+## License
+
+[Apache License 2.0](LICENSE)
