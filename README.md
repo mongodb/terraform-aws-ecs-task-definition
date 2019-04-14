@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/mongodb/terraform-aws-ecs-task-definition.svg?style=svg)](https://circleci.com/gh/mongodb/terraform-aws-ecs-task-definition)
+![CircleCI branch](https://img.shields.io/circleci/project/github/mongodb/terraform-aws-ecs-task-definition/master.svg?style=flat-square) ![GitHub release](https://img.shields.io/github/release/mongodb/terraform-aws-ecs-task-definition.svg?style=flat-square) ![GitHub](https://img.shields.io/github/license/mongodb/terraform-aws-ecs-task-definition.svg?style=flat-square)
 
 > A Terraform module for creating Amazon [ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
 
