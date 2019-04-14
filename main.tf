@@ -1,3 +1,34 @@
+# The ternary operators in this module are mandatory. All composite types (e.g., lists and maps) require encoding to
+# pass as arguments to the Terraform `template_file`[1] data source The `locals.tf` file contains the encoded values of
+# the composite types defined in the ECS Task Definition[2]. Certain variables, such as `healthCheck`, `linuxParameters`
+# and `portMappings`, require the `replace` function since they contain numerical values. For example, given the
+# following JSON:
+#
+#     -var 'portMappings=[{containerPort = 80, protocol = "TCP"}]'
+#
+#     [
+#       {
+#         "containerDefinitions": [
+#           {
+#             "portMappings": [
+#               {
+#                 "containerPort": 80,
+#                 "protocol": "TCP"
+#               }
+#             ]
+#           }
+#         ]
+#       }
+#     ]
+#
+# Since the `containerPort` and `hostPort`[3] fields are both integer types, then the `replace` function is necessary to
+# prevent quoting the value in strings. This issue is a known limitation in the Terraform `jsonencode`[4] function.
+#
+#  - 1. https://www.terraform.io/docs/providers/template/d/file.html
+#  - 2. https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html
+#  - 3. https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html
+#  - 4. https://github.com/hashicorp/terraform/issues/17033
+
 locals {
   command               = "${jsonencode(var.command)}"
   dnsSearchDomains      = "${jsonencode(var.dnsSearchDomains)}"
