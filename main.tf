@@ -118,11 +118,17 @@ locals {
     digit = "/\"(-[[:digit:]]|[[:digit:]]+)\"/"
   }
 
-  container_definitions = "${replace(data.template_file.container_definitions.rendered, "/\"(null)\"/", "$1")}"
+  container_definition = "${
+    var.register_task_definition ?
+    format("[%s]", data.template_file.container_definition.rendered) :
+    format("%s", data.template_file.container_definition.rendered)
+  }"
+
+  container_definitions = "${replace(local.container_definition, "/\"(null)\"/", "$1")}"
 }
 
-data "template_file" "container_definitions" {
-  template = "${file("${path.module}/templates/container-definitions.json.tmpl")}"
+data "template_file" "container_definition" {
+  template = "${file("${path.module}/templates/container-definition.json.tpl")}"
 
   vars = {
     command                = "${local.command == "[]" ? "null" : local.command}"
