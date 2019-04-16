@@ -8,6 +8,7 @@
   - [Use Cases](#use-cases)
 - [Requirements](#requirements)
 - [Usage](#usage)
+  - [Multiple Container Definitions](#multiple-container-definitions)
 - [Inputs](#inputs)
 - [Outputs](#outputs)
 - [Testing](#testing)
@@ -95,6 +96,10 @@ Invoking the commands defined below creates an ECS task definition with the foll
   }
 ]
 ```
+
+### Multiple Container Definitions
+
+By default, this module creates a task definition with a single container definition. To create a task definition with multiple container definitions, refer to the documentation of the [`merge`](modules/merge) module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
