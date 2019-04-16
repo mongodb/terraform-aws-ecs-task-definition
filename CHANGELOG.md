@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v1.1.0...v1.2.0) (2019-04-16)
+
+
+### Features
+
+* Add support for multiple containers ([a7377e2](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/a7377e2)), closes [#9](https://github.com/mongodb/terraform-aws-ecs-task-definition/issues/9)
+
 # [1.1.0](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v1.0.1...v1.1.0) (2019-04-11)
 
 
