@@ -3,6 +3,7 @@ jobs:
     docker:
       - image: circleci/golang:1.13.4
     steps:
+      - checkout
       - go/load-cache
       - go/mod-download
       - go/save-cache
