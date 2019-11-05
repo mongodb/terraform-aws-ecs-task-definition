@@ -6,3 +6,8 @@ jobs:
 orbs:
   go: circleci/go@0.2.0
 version: 2.1
+workflows:
+  default:
+    jobs:
+      - build
+  version: 2
