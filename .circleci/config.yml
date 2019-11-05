@@ -1,8 +1,12 @@
 jobs:
   build:
+    docker:
+      - image: circleci/golang:1.13.4
     steps:
-      - go/install:
-          version: 1.13.4
+      - go/load-cache
+      - go/mod-download
+      - go/save-cache
+      - go/test
 orbs:
   go: circleci/go@0.2.0
 version: 2.1
