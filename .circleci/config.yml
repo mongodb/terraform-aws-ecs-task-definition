@@ -1,9 +1,8 @@
 jobs:
-  jobs:
-    build:
-      steps:
-        - go/install:
-            version: 1.13.4
+  build:
+    steps:
+      - go/install:
+          version: 1.13.4
 orbs:
   go: circleci/go@0.2.0
 version: 2.1
