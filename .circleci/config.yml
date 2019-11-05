@@ -1,64 +1,9 @@
 jobs:
-  pre-commit:
-    docker:
-      - image: quay.io/mongodb-build/terratest
-    steps:
-      - checkout
-      - restore_cache:
-          key: v1-venv
-      - run: |
-          virtualenv venv
-          . venv/bin/activate
-
-          pip install pre-commit
-          pre-commit install
-          pre-commit run --all-files
-      - save_cache:
-          key: v1-venv
-          paths:
-            - venv
-  test:
-    docker:
-      - image: quay.io/mongodb-build/terratest
-    steps:
-      - checkout
-      - restore_cache:
-          key: gopkg-{{ checksum "Gopkg.lock" }}
-      - run: |
-          dep ensure
-          go test -timeout 30m -v ./...
-      - save_cache:
-          key: gopkg-{{ checksum "Gopkg.lock" }}
-          paths:
-            - vendor
-    working_directory: /go/src/github.com/10gen/terraform-mongohouse
-  deploy:
-    docker:
-      - image: circleci/node:8
-    steps:
-      - checkout
-      - restore_cache:
-          key: v1-npm
-      - run: |
-          sudo npm install @semantic-release/changelog -D
-          sudo npm install @semantic-release/git -D
-          npx semantic-release
-      - save_cache:
-          key: v1-npm
-          paths:
-            - node_modules
-version: 2.0
-workflows:
-  pre-commit-test-deploy:
-    jobs:
-      - pre-commit
-      - test:
-          requires:
-            - pre-commit
-      - deploy:
-          filters:
-            branches:
-              only: master
-          requires:
-            - test
-  version: 2
+  jobs:
+    build:
+      steps:
+        - go/install:
+            version: 1.13.4
+orbs:
+  go: circleci/go@0.2.0
+version: 2.1
