@@ -8,6 +8,20 @@ jobs:
       - go/mod-download
       - go/save-cache
       - go/test
+  release:
+    docker:
+      - image: circleci/node:10.16
+    steps:
+      - checkout
+      - restore_cache:
+          key: npm-cache
+      - run: npm install @semantic-release/changelog -D
+      - run: npm install @semantic-release/git -D
+      - run: npx semantic-release
+      - save_cache:
+          key: npm-cache
+          paths:
+            - node_modules
 orbs:
   go: circleci/go@0.2.0
 version: 2.1
@@ -15,4 +29,10 @@ workflows:
   default:
     jobs:
       - build
+      - release:
+          filters:
+            branches:
+              only: master
+          requires:
+            - build
   version: 2
