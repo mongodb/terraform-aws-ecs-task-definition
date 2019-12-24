@@ -1,5 +1,5 @@
 jobs:
-  build:
+  test:
     executor: go/default
     steps:
       - checkout
@@ -13,30 +13,26 @@ jobs:
           name: Install Terraform
       - go/test
   release:
-    docker:
-      - image: circleci/node:10.16
+    executor: node/default
     steps:
       - checkout
-      - restore_cache:
-          key: npm-cache
-      - run: npm install @semantic-release/changelog -D
-      - run: npm install @semantic-release/git -D
+      - node/with-cache:
+          steps:
+            - run: npm install @semantic-release/changelog -D
+            - run: npm install @semantic-release/git -D
       - run: npx semantic-release
-      - save_cache:
-          key: npm-cache
-          paths:
-            - node_modules
 orbs:
   go: circleci/go@0.2.0
+  node: circleci/node@1.1.6
 version: 2.1
 workflows:
   default:
     jobs:
-      - build
+      - test
       - release:
           filters:
             branches:
               only: master
           requires:
-            - build
+            - test
   version: 2
