@@ -1,3 +1,12 @@
+## [1.2.1](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v1.2.0...v1.2.1) (2019-12-24)
+
+
+### Bug Fixes
+
+* add checkout step to CircleCI config ([d40ec70](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/d40ec709706d7bfafce8c15eaf3f8915af3d424f))
+* begin updating CI config ([1f223b9](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/1f223b93aa62bd76607a4d31a8d55fe5e17d1ca8))
+* remove nested job directive from CI config ([958615c](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/958615c4547f163752560760b2ca3f0477f52e5f))
+
 # [1.2.0](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v1.1.0...v1.2.0) (2019-04-16)
 
 
