@@ -1,12 +1,16 @@
 jobs:
   build:
-    docker:
-      - image: circleci/golang:1.13.4
+    executor: default
     steps:
       - checkout
       - go/load-cache
       - go/mod-download
       - go/save-cache
+      - run:
+          command: |
+            wget --quiet https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip
+            sudo unzip -D /usr/local/bin terraform_0.11.14_linux_amd64.zip
+          name: Install Terraform
       - go/test
   release:
     docker:
