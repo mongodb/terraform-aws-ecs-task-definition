@@ -1,6 +1,6 @@
 jobs:
   build:
-    executor: default
+    executor: go/default
     steps:
       - checkout
       - go/load-cache
@@ -9,7 +9,7 @@ jobs:
       - run:
           command: |
             wget --quiet https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip
-            sudo unzip -D /usr/local/bin terraform_0.11.14_linux_amd64.zip
+            sudo unzip terraform_0.11.14_linux_amd64.zip -d /usr/local/bin
           name: Install Terraform
       - go/test
   release:
