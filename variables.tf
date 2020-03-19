@@ -4,7 +4,7 @@
 variable "command" {
   default     = []
   description = "The command that is passed to the container"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "cpu" {
@@ -20,37 +20,37 @@ variable "disableNetworking" {
 variable "dnsSearchDomains" {
   default     = []
   description = "A list of DNS search domains that are presented to the container"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "dnsServers" {
   default     = []
   description = "A list of DNS servers that are presented to the container"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "dockerLabels" {
   default     = {}
   description = "A key/value map of labels to add to the container"
-  type        = "map"
+  type        = map(string)
 }
 
 variable "dockerSecurityOptions" {
   default     = []
   description = "A list of strings to provide custom labels for SELinux and AppArmor multi-level security systems"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "entryPoint" {
   default     = []
   description = "The entry point that is passed to the container"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "environment" {
   default     = []
   description = "The environment variables to pass to a container"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "essential" {
@@ -66,7 +66,7 @@ variable "execution_role_arn" {
 variable "extraHosts" {
   default     = []
   description = "A list of hostnames and IP address mappings to append to the /etc/hosts file on the container"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "family" {
@@ -76,7 +76,7 @@ variable "family" {
 variable "healthCheck" {
   default     = {}
   description = "The health check command and associated configuration parameters for the container"
-  type        = "map"
+  type        = map(string)
 }
 
 variable "hostname" {
@@ -102,19 +102,19 @@ variable "ipc_mode" {
 variable "links" {
   default     = []
   description = "The link parameter allows containers to communicate with each other without the need for port mappings"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "linuxParameters" {
   default     = {}
   description = "Linux-specific modifications that are applied to the container, such as Linux KernelCapabilities"
-  type        = "map"
+  type        = map(string)
 }
 
 variable "logConfiguration" {
   default     = {}
   description = "The log configuration specification for the container"
-  type        = "map"
+  type        = map(string)
 }
 
 variable "memory" {
@@ -130,7 +130,7 @@ variable "memoryReservation" {
 variable "mountPoints" {
   default     = []
   description = "The mount points for data volumes in your container"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "name" {
@@ -151,13 +151,13 @@ variable "pid_mode" {
 variable "placement_constraints" {
   default     = []
   description = "An array of placement constraint objects to use for the task"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "portMappings" {
   default     = []
   description = "The list of port mappings for the container"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "privileged" {
@@ -183,37 +183,37 @@ variable "register_task_definition" {
 variable "repositoryCredentials" {
   default     = {}
   description = "The private repository authentication credentials to use"
-  type        = "map"
+  type        = map(string)
 }
 
 variable "requires_compatibilities" {
   default     = []
   description = "The launch type required by the task"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "resourceRequirements" {
   default     = []
   description = "The type and amount of a resource to assign to a container"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "secrets" {
   default     = []
   description = "The secrets to pass to the container"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "systemControls" {
   default     = []
   description = "A list of namespaced kernel parameters to set in the container"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "tags" {
   default     = {}
   description = "The metadata that you apply to the task definition to help you categorize and organize them"
-  type        = "map"
+  type        = map(string)
 }
 
 variable "task_role_arn" {
@@ -224,7 +224,7 @@ variable "task_role_arn" {
 variable "ulimits" {
   default     = []
   description = "A list of ulimits to set in the container"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "user" {
@@ -235,16 +235,17 @@ variable "user" {
 variable "volumes" {
   default     = []
   description = "A list of volume definitions in JSON format that containers in your task may use"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "volumesFrom" {
   default     = []
   description = "Data volumes to mount from another container"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "workingDirectory" {
   default     = ""
   description = "The working directory in which to run commands inside the container"
 }
+
