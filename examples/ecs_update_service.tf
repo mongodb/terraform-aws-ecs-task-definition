@@ -8,7 +8,10 @@
 #
 #  $ terraform taint null_resource.update-service
 
-provider "aws" {}
+provider "aws" {
+  region  = "us-east-1"
+  version = "~> 2.0"
+}
 
 module "mongo-task-definition" {
   source = "github.com/mongodb/terraform-aws-ecs-task-definition"
@@ -28,12 +31,12 @@ module "mongo-task-definition" {
 resource "aws_ecs_service" "mongo" {
   cluster         = "mongo"
   name            = "mongo"
-  task_definition = "${module.mongo-task-definition.arn}"
+  task_definition = module.mongo-task-definition.arn
 }
 
 resource "null_resource" "update-service" {
   triggers = {
-    arn = "${module.mongo-task-definition.arn}"
+    arn = module.mongo-task-definition.arn
   }
 
   provisioner "local-exec" {

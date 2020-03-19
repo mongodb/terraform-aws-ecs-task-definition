@@ -50,7 +50,7 @@ variable "entryPoint" {
 variable "environment" {
   default     = []
   description = "The environment variables to pass to a container"
-  type        = list(string)
+  type        = list(map(string))
 }
 
 variable "essential" {
@@ -76,7 +76,7 @@ variable "family" {
 variable "healthCheck" {
   default     = {}
   description = "The health check command and associated configuration parameters for the container"
-  type        = map(string)
+  type        = any
 }
 
 variable "hostname" {
@@ -108,7 +108,7 @@ variable "links" {
 variable "linuxParameters" {
   default     = {}
   description = "Linux-specific modifications that are applied to the container, such as Linux KernelCapabilities"
-  type        = map(string)
+  type        = any
 }
 
 variable "logConfiguration" {
@@ -130,7 +130,7 @@ variable "memoryReservation" {
 variable "mountPoints" {
   default     = []
   description = "The mount points for data volumes in your container"
-  type        = list(string)
+  type        = list(any)
 }
 
 variable "name" {
@@ -157,7 +157,7 @@ variable "placement_constraints" {
 variable "portMappings" {
   default     = []
   description = "The list of port mappings for the container"
-  type        = list(string)
+  type        = list(any)
 }
 
 variable "privileged" {
@@ -224,7 +224,7 @@ variable "task_role_arn" {
 variable "ulimits" {
   default     = []
   description = "A list of ulimits to set in the container"
-  type        = list(string)
+  type        = list(any)
 }
 
 variable "user" {
@@ -235,7 +235,7 @@ variable "user" {
 variable "volumes" {
   default     = []
   description = "A list of volume definitions in JSON format that containers in your task may use"
-  type        = list(string)
+  type        = list(any)
 }
 
 variable "volumesFrom" {
@@ -248,4 +248,3 @@ variable "workingDirectory" {
   default     = ""
   description = "The working directory in which to run commands inside the container"
 }
-
