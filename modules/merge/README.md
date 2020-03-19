@@ -115,11 +115,15 @@ resource "aws_ecs_task_definition" "hello_world" {
 **Note:** The `register_task_definition` flag for both task definitions is required; otherwise a task definition containing a single container definition is registered created for both the `wordpress` and `mysql` services.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Providers
+
+No provider.
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| container\_definitions | A list of container definitions in JSON format that describe the different containers that make up your task | list | `[]` | no |
+|------|-------------|------|---------|:-----:|
+| container\_definitions | A list of container definitions in JSON format that describe the different containers that make up your task | `list` | `[]` | no |
 
 ## Outputs
 

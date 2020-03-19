@@ -8,8 +8,8 @@ jobs:
       - go/save-cache
       - run:
           command: |
-            wget --quiet https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip
-            sudo unzip terraform_0.11.14_linux_amd64.zip -d /usr/local/bin
+            wget --quiet https://releases.hashicorp.com/terraform/0.12.23/terraform_0.12.23_linux_amd64.zip
+            sudo unzip terraform_0.12.23_linux_amd64.zip -d /usr/local/bin
           name: Install Terraform
       - go/test
   release:

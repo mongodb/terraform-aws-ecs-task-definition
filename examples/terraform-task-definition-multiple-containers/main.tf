@@ -38,12 +38,12 @@ module "merged" {
   source = "../../modules/merge"
 
   container_definitions = [
-    "${module.mongodb.container_definitions}",
-    "${module.redis.container_definitions}",
+    module.mongodb.container_definitions,
+    module.redis.container_definitions,
   ]
 }
 
 resource "aws_ecs_task_definition" "ecs_task_definition" {
-  container_definitions = "${module.merged.container_definitions}"
+  container_definitions = module.merged.container_definitions
   family                = "app"
 }
