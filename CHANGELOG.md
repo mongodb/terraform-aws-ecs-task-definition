@@ -1,3 +1,21 @@
+# [2.0.0](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v1.2.1...v2.0.0) (2020-03-19)
+
+
+### Features
+
+* upgrade module to support Terraform 0.12.x ([#24](https://github.com/mongodb/terraform-aws-ecs-task-definition/issues/24)) ([8998443](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/899844342323285fb5c4cac4f4bc80c9b31dcdc5))
+
+
+### BREAKING CHANGES
+
+* This module no longer supports Terraform versions 0.11.x. Please upgrade
+your version of Terraform and run the `0.12upgrade` command. Visit the
+following URL for more information:
+
+    https://www.terraform.io/docs/commands/0.12upgrade.html
+
+* fix: change Terraform download URL to latest in CI
+
 ## [1.2.1](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v1.2.0...v1.2.1) (2019-12-24)
 
 
