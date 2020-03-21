@@ -22,7 +22,16 @@ module "redis" {
   family = "redis"
   image  = "redis:alpine"
   memory = 512
-  name   = "redis"
+
+  logConfiguration = {
+    logDriver = "awslogs"
+    options = {
+      awslogs-group  = "awslogs-mongodb"
+      awslogs-region = "us-east-1"
+    }
+  }
+
+  name = "redis"
 
   portMappings = [
     {

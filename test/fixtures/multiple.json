@@ -58,7 +58,13 @@
     "interactive": false,
     "links": null,
     "linuxParameters": null,
-    "logConfiguration": null,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "awslogs-mongodb",
+        "awslogs-region": "us-east-1"
+      }
+    },
     "memory": 512,
     "memoryReservation": null,
     "mountPoints": null,
