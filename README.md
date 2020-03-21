@@ -137,7 +137,7 @@ By default, this module creates a task definition with a single container defini
 | ipc\_mode | The IPC resource namespace to use for the containers in the task | `string` | `"host"` | no |
 | links | The link parameter allows containers to communicate with each other without the need for port mappings | `list(string)` | `[]` | no |
 | linuxParameters | Linux-specific modifications that are applied to the container, such as Linux KernelCapabilities | `any` | `{}` | no |
-| logConfiguration | The log configuration specification for the container | `map(string)` | `{}` | no |
+| logConfiguration | The log configuration specification for the container | `any` | `{}` | no |
 | memory | The hard limit (in MiB) of memory to present to the container | `number` | `0` | no |
 | memoryReservation | The soft limit (in MiB) of memory to reserve for the container | `number` | `0` | no |
 | mountPoints | The mount points for data volumes in your container | `list(any)` | `[]` | no |

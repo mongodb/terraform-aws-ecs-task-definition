@@ -43,6 +43,14 @@ linuxParameters = {
   ]
 }
 
+logConfiguration = {
+  logDriver = "awslogs"
+  options = {
+    awslogs-group  = "awslogs-mongodb"
+    awslogs-region = "us-east-1"
+  }
+}
+
 memoryReservation = 512
 
 mountPoints = [
