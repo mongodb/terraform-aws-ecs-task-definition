@@ -178,7 +178,6 @@ By default, this module creates a task definition with a single container defini
 
 This module uses [Terratest](https://github.com/gruntwork-io/terratest), a Go library maintained by [Gruntwork](https://gruntwork.io/), to write automated tests for your infrastructure code. To invoke tests, run the following commands:
 
-    $ dep ensure
     $ go test -v ./...
 
 ## License
