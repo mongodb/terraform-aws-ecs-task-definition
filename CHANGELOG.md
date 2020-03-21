@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.0.0...v2.0.1) (2020-03-21)
+
+
+### Bug Fixes
+
+* update type of logConfiguration variable ([#27](https://github.com/mongodb/terraform-aws-ecs-task-definition/issues/27)) ([041b144](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/041b1445f074dfa3205da1a32d5f91496449f728)), closes [#26](https://github.com/mongodb/terraform-aws-ecs-task-definition/issues/26)
+
 # [2.0.0](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v1.2.1...v2.0.0) (2020-03-19)
 
 
