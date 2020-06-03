@@ -1,3 +1,5 @@
+region = "us-east-1"
+
 environment = [
   {
     name  = "AWS_DEFAULT_REGION"
