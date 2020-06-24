@@ -8,8 +8,9 @@ variable "command" {
 }
 
 variable "cpu" {
-  default     = 0
+  default     = 256
   description = "The number of cpu units reserved for the container"
+  type        = number
 }
 
 variable "disableNetworking" {
@@ -118,8 +119,9 @@ variable "logConfiguration" {
 }
 
 variable "memory" {
-  default     = 0
+  default     = 512
   description = "The hard limit (in MiB) of memory to present to the container"
+  type        = number
 }
 
 variable "memoryReservation" {
