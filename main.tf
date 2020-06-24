@@ -175,6 +175,13 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
           scope         = lookup(docker_volume_configuration.value, "scope", null)
         }
       }
+      dynamic "efs_volume_configuration" {
+        for_each = lookup(volume.value, "efs_volume_configuration", [])
+        content {
+          file_system_id = lookup(efs_volume_configuration.value, "file_system_id", null)
+          root_directory = lookup(efs_volume_configuration.value, "root_directory", null)
+        }
+      }
     }
   }
 

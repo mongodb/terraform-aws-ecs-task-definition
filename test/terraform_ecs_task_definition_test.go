@@ -17,7 +17,7 @@ func TestSingleContainerDefinition(t *testing.T) {
 	t.Parallel()
 	options := &terraform.Options{
 		TerraformDir: "..",
-		VarFiles:     []string{"varfile.tfvars"},
+		VarFiles:     []string{"test/varfile.tfvars"},
 	}
 	defer terraform.Destroy(t, options)
 	terraform.InitAndApply(t, options)
