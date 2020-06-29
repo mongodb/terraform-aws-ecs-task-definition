@@ -1,7 +1,7 @@
 [
   {
     "command": null,
-    "cpu": null,
+    "cpu": 256,
     "disableNetworking": false,
     "dnsSearchDomains": null,
     "dnsServers": null,
@@ -68,7 +68,7 @@
         "awslogs-region": "us-east-1"
       }
     },
-    "memory": null,
+    "memory": 512,
     "memoryReservation": 512,
     "mountPoints": [
       {
