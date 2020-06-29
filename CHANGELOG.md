@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.0.1...v2.1.0) (2020-06-29)
+
+
+### Features
+
+* allow task definitions to be used by Fargate ([#37](https://github.com/mongodb/terraform-aws-ecs-task-definition/issues/37)) ([8e1e46c](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/8e1e46ca235e5fb3113bef6e44622a3f9e2664ee))
+
 ## [2.0.1](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.0.0...v2.0.1) (2020-03-21)
 
 
