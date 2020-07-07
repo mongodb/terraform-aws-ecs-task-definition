@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.1.0...v2.1.1) (2020-07-07)
+
+
+### Bug Fixes
+
+* use correct type for extraHosts directive ([#39](https://github.com/mongodb/terraform-aws-ecs-task-definition/issues/39)) ([084ebe6](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/084ebe60e6b902ea51312cf3833f60122a17959c))
+
 # [2.1.0](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.0.1...v2.1.0) (2020-06-29)
 
 
