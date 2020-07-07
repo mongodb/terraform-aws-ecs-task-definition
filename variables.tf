@@ -67,7 +67,11 @@ variable "execution_role_arn" {
 variable "extraHosts" {
   default     = []
   description = "A list of hostnames and IP address mappings to append to the /etc/hosts file on the container"
-  type        = list(string)
+
+  type = list(object({
+    ipAddress = string
+    hostname  = string
+  }))
 }
 
 variable "family" {
