@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.1.1...v2.1.2) (2020-10-01)
+
+
+### Bug Fixes
+
+* **task-definition:** update volumesFrom data type ([#42](https://github.com/mongodb/terraform-aws-ecs-task-definition/issues/42)) ([9d61d38](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/9d61d386f2659ea3bea491990c10d951eaab971d))
+
 ## [2.1.1](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.1.0...v2.1.1) (2020-07-07)
 
 
