@@ -247,7 +247,11 @@ variable "volumes" {
 variable "volumesFrom" {
   default     = []
   description = "Data volumes to mount from another container"
-  type        = list(string)
+
+  type = list(object({
+    readOnly        = bool
+    sourceContainer = string
+  }))
 }
 
 variable "workingDirectory" {
