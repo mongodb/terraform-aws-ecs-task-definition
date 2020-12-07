@@ -1,3 +1,10 @@
+## [2.1.3](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.1.2...v2.1.3) (2020-12-07)
+
+
+### Bug Fixes
+
+* secrets type to list(map(string)) ([#45](https://github.com/mongodb/terraform-aws-ecs-task-definition/issues/45)) ([78bf0c3](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/78bf0c354c11bc7f7b9f30620ad24497dccfe624)), closes [#44](https://github.com/mongodb/terraform-aws-ecs-task-definition/issues/44)
+
 ## [2.1.2](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.1.1...v2.1.2) (2020-10-01)
 
 
