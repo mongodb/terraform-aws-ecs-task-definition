@@ -184,6 +184,7 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
       }
     }
   }
+  tags  = var.tags
 
   count = var.register_task_definition ? 1 : 0
 }
