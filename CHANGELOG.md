@@ -1,3 +1,10 @@
+## [2.1.4](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.1.3...v2.1.4) (2021-01-14)
+
+
+### Bug Fixes
+
+* Add tags to the aws_ecs_task_definition resource ([#48](https://github.com/mongodb/terraform-aws-ecs-task-definition/issues/48)) ([5d3b19f](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/5d3b19f2887cdb2195a3e6c993fa0236fe5b6132))
+
 ## [2.1.3](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.1.2...v2.1.3) (2020-12-07)
 
 
