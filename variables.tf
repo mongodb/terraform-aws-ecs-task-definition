@@ -157,7 +157,10 @@ variable "pid_mode" {
 variable "placement_constraints" {
   default     = []
   description = "An array of placement constraint objects to use for the task"
-  type        = list(string)
+  type = list(object({
+    type       = string
+    expression = string
+  }))
 }
 
 variable "portMappings" {
