@@ -1,3 +1,10 @@
+## [2.1.5](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.1.4...v2.1.5) (2021-01-19)
+
+
+### Bug Fixes
+
+* variable type def for placement constraints ([#40](https://github.com/mongodb/terraform-aws-ecs-task-definition/issues/40)) ([3a3f6f8](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/3a3f6f8c53e23e6d94675671c706c11f61e8040f))
+
 ## [2.1.4](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.1.3...v2.1.4) (2021-01-14)
 
 
