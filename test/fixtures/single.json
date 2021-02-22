@@ -68,6 +68,7 @@
         "awslogs-region": "us-east-1"
       }
     },
+    "firelensConfiguration": null,
     "memory": 512,
     "memoryReservation": 512,
     "mountPoints": [
@@ -100,7 +101,7 @@
       }
     ],
     "user": "root",
-    "volumesFrom": null,
+    "volumesFrom": [],
     "workingDirectory": "~/project"
   }
 ]

@@ -17,6 +17,7 @@
   "links": ${links},
   "linuxParameters": ${linuxParameters},
   "logConfiguration": ${logConfiguration},
+  "firelensConfiguration": ${firelensConfiguration},
   "memory": ${memory},
   "memoryReservation": ${memoryReservation},
   "mountPoints": ${mountPoints},

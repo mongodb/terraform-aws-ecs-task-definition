@@ -8,7 +8,7 @@
     "dockerLabels": null,
     "dockerSecurityOptions": null,
     "entryPoint": null,
-    "environment": null,
+    "environment": [],
     "essential": true,
     "extraHosts": null,
     "healthCheck": null,
@@ -18,9 +18,10 @@
     "links": null,
     "linuxParameters": null,
     "logConfiguration": null,
+    "firelensConfiguration": null,
     "memory": 512,
     "memoryReservation": null,
-    "mountPoints": null,
+    "mountPoints": [],
     "name": "mongodb",
     "portMappings": [
       {
@@ -37,7 +38,7 @@
     "systemControls": null,
     "ulimits": null,
     "user": null,
-    "volumesFrom": null,
+    "volumesFrom": [],
     "workingDirectory": null
   },
   {
@@ -49,7 +50,7 @@
     "dockerLabels": null,
     "dockerSecurityOptions": null,
     "entryPoint": null,
-    "environment": null,
+    "environment": [],
     "essential": true,
     "extraHosts": null,
     "healthCheck": null,
@@ -65,9 +66,10 @@
         "awslogs-region": "us-east-1"
       }
     },
+    "firelensConfiguration": null,
     "memory": 512,
     "memoryReservation": null,
-    "mountPoints": null,
+    "mountPoints": [],
     "name": "redis",
     "portMappings": [
       {
@@ -84,7 +86,7 @@
     "systemControls": null,
     "ulimits": null,
     "user": null,
-    "volumesFrom": null,
+    "volumesFrom": [],
     "workingDirectory": null
   }
 ]
