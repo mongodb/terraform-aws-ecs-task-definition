@@ -53,7 +53,8 @@ locals {
     "$1",
   )
 
-  logConfiguration = jsonencode(var.logConfiguration)
+  logConfiguration      = jsonencode(var.logConfiguration)
+  firelensConfiguration = jsonencode(var.firelensConfiguration)
 
   mountPoints = replace(
     replace(jsonencode(var.mountPoints), "/\"1\"/", "true"),
@@ -109,6 +110,7 @@ data "template_file" "container_definition" {
     links                  = local.links == "[]" ? "null" : local.links
     linuxParameters        = local.linuxParameters == "{}" ? "null" : local.linuxParameters
     logConfiguration       = local.logConfiguration == "{}" ? "null" : local.logConfiguration
+    firelensConfiguration  = local.firelensConfiguration == "{}" ? "null" : local.firelensConfiguration
     memory                 = var.memory == 0 ? "null" : var.memory
     memoryReservation      = var.memoryReservation == 0 ? "null" : var.memoryReservation
     mountPoints            = local.mountPoints == "[]" ? "null" : local.mountPoints
