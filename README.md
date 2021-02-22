@@ -64,14 +64,14 @@ Invoking the commands defined below creates an ECS task definition with the foll
 [
   {
     "command": null,
-    "cpu": null,
+    "cpu": 256,
     "disableNetworking": false,
     "dnsSearchDomains": null,
     "dnsServers": null,
     "dockerLabels": null,
     "dockerSecurityOptions": null,
     "entryPoint": null,
-    "environment": null,
+    "environment": [],
     "essential": true,
     "extraHosts": null,
     "healthCheck": null,
@@ -84,7 +84,7 @@ Invoking the commands defined below creates an ECS task definition with the foll
     "firelensConfiguration": null,
     "memory": 512,
     "memoryReservation": null,
-    "mountPoints": null,
+    "mountPoints": [],
     "name": "mongo",
     "portMappings": [{"containerPort":27017}],
     "privileged": false,
@@ -96,7 +96,7 @@ Invoking the commands defined below creates an ECS task definition with the foll
     "systemControls": null,
     "ulimits": null,
     "user": null,
-    "volumesFrom": null,
+    "volumesFrom": [],
     "workingDirectory": null
   }
 ]

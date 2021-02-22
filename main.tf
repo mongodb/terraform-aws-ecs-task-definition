@@ -93,14 +93,14 @@ data "template_file" "container_definition" {
 
   vars = {
     command                = local.command == "[]" ? "null" : local.command
-    cpu                    = var.cpu == 0 ? "null" : var.cpu
+    cpu                    = var.cpu
     disableNetworking      = var.disableNetworking ? true : false
     dnsSearchDomains       = local.dnsSearchDomains == "[]" ? "null" : local.dnsSearchDomains
     dnsServers             = local.dnsServers == "[]" ? "null" : local.dnsServers
     dockerLabels           = local.dockerLabels == "{}" ? "null" : local.dockerLabels
     dockerSecurityOptions  = local.dockerSecurityOptions == "[]" ? "null" : local.dockerSecurityOptions
     entryPoint             = local.entryPoint == "[]" ? "null" : local.entryPoint
-    environment            = local.environment == "[]" ? "null" : local.environment
+    environment            = local.environment == "[]" ? "[]" : local.environment
     essential              = var.essential ? true : false
     extraHosts             = local.extraHosts == "[]" ? "null" : local.extraHosts
     healthCheck            = local.healthCheck == "{}" ? "null" : local.healthCheck
@@ -113,9 +113,9 @@ data "template_file" "container_definition" {
     firelensConfiguration  = local.firelensConfiguration == "{}" ? "null" : local.firelensConfiguration
     memory                 = var.memory == 0 ? "null" : var.memory
     memoryReservation      = var.memoryReservation == 0 ? "null" : var.memoryReservation
-    mountPoints            = local.mountPoints == "[]" ? "null" : local.mountPoints
+    mountPoints            = local.mountPoints == "[]" ? "[]" : local.mountPoints
     name                   = var.name == "" ? "null" : var.name
-    portMappings           = local.portMappings == "[]" ? "null" : local.portMappings
+    portMappings           = local.portMappings == "[]" ? "[]" : local.portMappings
     privileged             = var.privileged ? true : false
     pseudoTerminal         = var.pseudoTerminal ? true : false
     readonlyRootFilesystem = var.readonlyRootFilesystem ? true : false
@@ -125,7 +125,7 @@ data "template_file" "container_definition" {
     systemControls         = local.systemControls == "[]" ? "null" : local.systemControls
     ulimits                = local.ulimits == "[]" ? "null" : local.ulimits
     user                   = var.user == "" ? "null" : var.user
-    volumesFrom            = local.volumesFrom == "[]" ? "null" : local.volumesFrom
+    volumesFrom            = local.volumesFrom == "[]" ? "[]" : local.volumesFrom
     workingDirectory       = var.workingDirectory == "" ? "null" : var.workingDirectory
   }
 }
