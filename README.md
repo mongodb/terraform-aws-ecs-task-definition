@@ -153,14 +153,14 @@ By default, this module creates a task definition with a single container defini
 | repositoryCredentials | The private repository authentication credentials to use | `map(string)` | `{}` | no |
 | requires\_compatibilities | The launch type required by the task | `list(string)` | `[]` | no |
 | resourceRequirements | The type and amount of a resource to assign to a container | `list(string)` | `[]` | no |
-| secrets | The secrets to pass to the container | `list(string)` | `[]` | no |
+| secrets | The secrets to pass to the container | `list(map(string))` | `[]` | no |
 | systemControls | A list of namespaced kernel parameters to set in the container | `list(string)` | `[]` | no |
 | tags | The metadata that you apply to the task definition to help you categorize and organize them | `map(string)` | `{}` | no |
 | task\_role\_arn | The short name or full Amazon Resource Name (ARN) of the IAM role that containers in this task can assume | `string` | `""` | no |
 | ulimits | A list of ulimits to set in the container | `list(any)` | `[]` | no |
 | user | The user name to use inside the container | `string` | `""` | no |
 | volumes | A list of volume definitions in JSON format that containers in your task may use | `list(any)` | `[]` | no |
-| volumesFrom | Data volumes to mount from another container | `list(string)` | `[]` | no |
+| volumesFrom | Data volumes to mount from another container | `list(object)` | `[]` | no |
 | workingDirectory | The working directory in which to run commands inside the container | `string` | `""` | no |
 
 ## Outputs
