@@ -33,5 +33,7 @@
   "ulimits": ${ulimits},
   "user": "${user}",
   "volumesFrom": ${volumesFrom},
-  "workingDirectory": "${workingDirectory}"
+  "workingDirectory": "${workingDirectory}",
+  "startTimeout": ${startTimeout},
+  "stopTimeout": ${stopTimeout}
 }

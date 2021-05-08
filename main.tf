@@ -122,6 +122,8 @@ data "template_file" "container_definition" {
     repositoryCredentials  = local.repositoryCredentials == "{}" ? "null" : local.repositoryCredentials
     resourceRequirements   = local.resourceRequirements == "[]" ? "null" : local.resourceRequirements
     secrets                = local.secrets == "[]" ? "null" : local.secrets
+    startTimeout           = var.startTimeout
+    stopTimeout            = var.stopTimeout
     systemControls         = local.systemControls == "[]" ? "null" : local.systemControls
     ulimits                = local.ulimits == "[]" ? "null" : local.ulimits
     user                   = var.user == "" ? "null" : var.user

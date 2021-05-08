@@ -219,6 +219,17 @@ variable "secrets" {
   type        = list(map(string))
 }
 
+variable "startTimeout" {
+  default     = 120
+  description = "Time duration (in seconds) to wait before giving up on resolving dependencies for a container."
+}
+
+variable "stopTimeout" {
+  default     = 120
+  description = "Time duration (in seconds) to wait before the container is forcefully killed if it doesn't exit normally on its own."
+}
+
+
 variable "systemControls" {
   default     = []
   description = "A list of namespaced kernel parameters to set in the container"
