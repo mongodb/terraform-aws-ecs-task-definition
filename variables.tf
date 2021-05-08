@@ -220,12 +220,12 @@ variable "secrets" {
 }
 
 variable "startTimeout" {
-  default     = 120
+  default     = 60
   description = "Time duration (in seconds) to wait before giving up on resolving dependencies for a container."
 }
 
 variable "stopTimeout" {
-  default     = 120
+  default     = 30
   description = "Time duration (in seconds) to wait before the container is forcefully killed if it doesn't exit normally on its own."
 }
 
