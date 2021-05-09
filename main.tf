@@ -38,6 +38,7 @@ locals {
   entryPoint            = jsonencode(var.entryPoint)
   environment           = jsonencode(var.environment)
   extraHosts            = jsonencode(var.extraHosts)
+  dependsOn             = jsonencode(var.dependsOn)
 
   healthCheck = replace(jsonencode(var.healthCheck), local.classes["digit"], "$1")
 
@@ -125,6 +126,7 @@ data "template_file" "container_definition" {
     user                   = var.user == "" ? "null" : var.user
     volumesFrom            = local.volumesFrom == "[]" ? "null" : local.volumesFrom
     workingDirectory       = var.workingDirectory == "" ? "null" : var.workingDirectory
+    dependsOn              = local.dependsOn == "[]" ? "null" : local.dependsOn
   }
 }
 
