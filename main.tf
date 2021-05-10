@@ -137,8 +137,8 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
   pid_mode              = var.pid_mode
 
   # Fargate requires cpu and memory to be defined at the task level
-  cpu    = var.cpu
-  memory = var.memory
+  cpu    = var.taskCpu
+  memory = var.taskMemory
 
   dynamic "placement_constraints" {
     for_each = var.placement_constraints

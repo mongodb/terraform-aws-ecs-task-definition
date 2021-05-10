@@ -8,7 +8,7 @@ variable "command" {
 }
 
 variable "cpu" {
-  default     = 256
+  default     = 0
   description = "The number of cpu units reserved for the container"
   type        = number
 }
@@ -225,6 +225,17 @@ variable "tags" {
   type        = map(string)
 }
 
+variable "taskCpu" {
+  default     = 256
+  description = "The number of cpu units limited for the task. Required for Fargate. _null_ to disable"
+  type        = number
+}
+
+variable "taskMemory" {
+  default     = 256
+  description = "Memory (in MiB) for the task. Required for Fargate. _null_ to disable"
+  type        = number
+}
 variable "task_role_arn" {
   default     = ""
   description = "The short name or full Amazon Resource Name (ARN) of the IAM role that containers in this task can assume"
@@ -261,3 +272,4 @@ variable "workingDirectory" {
   default     = ""
   description = "The working directory in which to run commands inside the container"
 }
+
