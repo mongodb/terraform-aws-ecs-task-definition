@@ -1,3 +1,10 @@
+## [2.1.7](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.1.6...v2.1.7) (2021-06-14)
+
+
+### Bug Fixes
+
+* tf fmt ([#54](https://github.com/mongodb/terraform-aws-ecs-task-definition/issues/54)) ([597dd24](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/597dd2416f08b4f72bbaa1e3ef453e4edbaf65e6))
+
 ## [2.1.6](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.1.5...v2.1.6) (2021-03-16)
 
 
