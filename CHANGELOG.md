@@ -1,3 +1,10 @@
+## [2.1.6](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.1.5...v2.1.6) (2021-03-16)
+
+
+### Bug Fixes
+
+* wrong variables type ([#50](https://github.com/mongodb/terraform-aws-ecs-task-definition/issues/50)) ([d5fed9e](https://github.com/mongodb/terraform-aws-ecs-task-definition/commit/d5fed9e416dc4617208234415b7f3affebb23ff0))
+
 ## [2.1.5](https://github.com/mongodb/terraform-aws-ecs-task-definition/compare/v2.1.4...v2.1.5) (2021-01-19)
 
 
