@@ -32,5 +32,6 @@
   "ulimits": ${ulimits},
   "user": "${user}",
   "volumesFrom": ${volumesFrom},
-  "workingDirectory": "${workingDirectory}"
+  "workingDirectory": "${workingDirectory}",
+  "dependsOn": ${dependsOn}
 }

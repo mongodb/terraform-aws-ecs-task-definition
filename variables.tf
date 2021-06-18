@@ -261,3 +261,9 @@ variable "workingDirectory" {
   default     = ""
   description = "The working directory in which to run commands inside the container"
 }
+
+variable "dependsOn" {
+  default     = []
+  description = "The list of port mappings for the container"
+  type        = list(any)
+}
