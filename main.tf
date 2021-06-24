@@ -65,7 +65,6 @@ locals {
 
   repositoryCredentials = jsonencode(var.repositoryCredentials)
   resourceRequirements  = jsonencode(var.resourceRequirements)
-  secrets               = jsonencode(var.secrets)
   systemControls        = jsonencode(var.systemControls)
 
   ulimits = replace(jsonencode(var.ulimits), local.classes["digit"], "$1")
@@ -119,7 +118,7 @@ data "template_file" "container_definition" {
     readonlyRootFilesystem = var.readonlyRootFilesystem ? true : false
     repositoryCredentials  = local.repositoryCredentials == "{}" ? "null" : local.repositoryCredentials
     resourceRequirements   = local.resourceRequirements == "[]" ? "null" : local.resourceRequirements
-    secrets                = local.secrets == "[]" ? "null" : local.secrets
+    secrets                = jsonencode(var.secrets) == "[]" ? "null" : jsonencode(var.secrets) // do not parse secrets via a local var
     systemControls         = local.systemControls == "[]" ? "null" : local.systemControls
     ulimits                = local.ulimits == "[]" ? "null" : local.ulimits
     user                   = var.user == "" ? "null" : var.user
