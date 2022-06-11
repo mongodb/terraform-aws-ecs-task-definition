@@ -49,9 +49,9 @@ variable "entryPoint" {
 }
 
 variable "environment" {
-  default     = []
+  default     = {}
   description = "The environment variables to pass to a container"
-  type        = list(map(string))
+  type        = map(string)
 }
 
 variable "essential" {

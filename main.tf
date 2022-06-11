@@ -36,9 +36,9 @@ locals {
   dockerLabels          = jsonencode(var.dockerLabels)
   dockerSecurityOptions = jsonencode(var.dockerSecurityOptions)
   entryPoint            = jsonencode(var.entryPoint)
-  environment           = jsonencode(var.environment)
   extraHosts            = jsonencode(var.extraHosts)
 
+  environment = jsonencode(var.environment != {} ? [for k, v in var.environment : { "name" : k, "value" : v }] : [])
   healthCheck = replace(jsonencode(var.healthCheck), local.classes["digit"], "$1")
 
   links = jsonencode(var.links)

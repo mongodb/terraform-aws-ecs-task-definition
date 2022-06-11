@@ -1,9 +1,6 @@
-environment = [
-  {
-    name  = "AWS_DEFAULT_REGION"
-    value = "us-east-1"
-  },
-]
+environment = {
+  "AWS_DEFAULT_REGION" = "us-east-1"
+}
 
 family = "default"
 
