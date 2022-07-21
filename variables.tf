@@ -273,3 +273,8 @@ variable "workingDirectory" {
   description = "The working directory in which to run commands inside the container"
 }
 
+variable "ephemeralStorage" {
+  default     = 21
+  description = "Ephemeral storage disk space (in GiB) for the container"
+  type        = number
+}
