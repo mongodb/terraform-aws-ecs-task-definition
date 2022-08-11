@@ -88,7 +88,7 @@ locals {
   container_definitions = replace(local.container_definition, "/\"(null)\"/", "$1")
 
   container_definition_template = templatefile(
-    file("${path.module}/templates/container-definition.json.tpl"),
+    "${path.module}/templates/container-definition.json.tpl",
     {
       command                = local.command == "[]" ? "null" : local.command
       cpu                    = var.cpu == 0 ? "null" : var.cpu
