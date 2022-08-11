@@ -1,5 +1,5 @@
 # The ternary operators in this module are mandatory. All composite types (e.g., lists and maps) require encoding to
-# pass as arguments to the Terraform `template_file`[1] data source The `locals.tf` file contains the encoded values of
+# pass as arguments to the Terraform `templatefile`[1] data source The `locals.tf` file contains the encoded values of
 # the composite types defined in the ECS Task Definition[2]. Certain variables, such as `healthCheck`, `linuxParameters`
 # and `portMappings`, require the `replace` function since they contain numerical values. For example, given the
 # following JSON:
@@ -24,7 +24,7 @@
 # Since the `containerPort` and `hostPort`[3] fields are both integer types, then the `replace` function is necessary to
 # prevent quoting the value in strings. This issue is a known limitation in the Terraform `jsonencode`[4] function.
 #
-#  - 1. https://www.terraform.io/docs/providers/template/d/file.html
+#  - 1. https://www.terraform.io/language/functions/templatefile
 #  - 2. https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html
 #  - 3. https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html
 #  - 4. https://github.com/hashicorp/terraform/issues/17033
@@ -82,50 +82,50 @@ locals {
     digit = "/\"(-[[:digit:]]|[[:digit:]]+)\"/"
   }
 
-  container_definition = var.register_task_definition ? format("[%s]", data.template_file.container_definition.rendered) : format("%s", data.template_file.container_definition.rendered)
+  container_definition = var.register_task_definition ? format("[%s]", local.container_definition_template) : format("%s", local.container_definition_template)
+
 
   container_definitions = replace(local.container_definition, "/\"(null)\"/", "$1")
-}
 
-data "template_file" "container_definition" {
-  template = file("${path.module}/templates/container-definition.json.tpl")
-
-  vars = {
-    command                = local.command == "[]" ? "null" : local.command
-    cpu                    = var.cpu == 0 ? "null" : var.cpu
-    disableNetworking      = var.disableNetworking ? true : false
-    dnsSearchDomains       = local.dnsSearchDomains == "[]" ? "null" : local.dnsSearchDomains
-    dnsServers             = local.dnsServers == "[]" ? "null" : local.dnsServers
-    dockerLabels           = local.dockerLabels == "{}" ? "null" : local.dockerLabels
-    dockerSecurityOptions  = local.dockerSecurityOptions == "[]" ? "null" : local.dockerSecurityOptions
-    entryPoint             = local.entryPoint == "[]" ? "null" : local.entryPoint
-    environment            = local.environment == "[]" ? "null" : local.environment
-    essential              = var.essential ? true : false
-    extraHosts             = local.extraHosts == "[]" ? "null" : local.extraHosts
-    healthCheck            = local.healthCheck == "{}" ? "null" : local.healthCheck
-    hostname               = var.hostname == "" ? "null" : var.hostname
-    image                  = var.image == "" ? "null" : var.image
-    interactive            = var.interactive ? true : false
-    links                  = local.links == "[]" ? "null" : local.links
-    linuxParameters        = local.linuxParameters == "{}" ? "null" : local.linuxParameters
-    logConfiguration       = local.logConfiguration == "{}" ? "null" : local.logConfiguration
-    memory                 = var.memory == 0 ? "null" : var.memory
-    memoryReservation      = var.memoryReservation == 0 ? "null" : var.memoryReservation
-    mountPoints            = local.mountPoints == "[]" ? "null" : local.mountPoints
-    name                   = var.name == "" ? "null" : var.name
-    portMappings           = local.portMappings == "[]" ? "null" : local.portMappings
-    privileged             = var.privileged ? true : false
-    pseudoTerminal         = var.pseudoTerminal ? true : false
-    readonlyRootFilesystem = var.readonlyRootFilesystem ? true : false
-    repositoryCredentials  = local.repositoryCredentials == "{}" ? "null" : local.repositoryCredentials
-    resourceRequirements   = local.resourceRequirements == "[]" ? "null" : local.resourceRequirements
-    secrets                = local.secrets == "[]" ? "null" : local.secrets
-    systemControls         = local.systemControls == "[]" ? "null" : local.systemControls
-    ulimits                = local.ulimits == "[]" ? "null" : local.ulimits
-    user                   = var.user == "" ? "null" : var.user
-    volumesFrom            = local.volumesFrom == "[]" ? "null" : local.volumesFrom
-    workingDirectory       = var.workingDirectory == "" ? "null" : var.workingDirectory
-  }
+  container_definition_template = templatefile(
+    file("${path.module}/templates/container-definition.json.tpl"),
+    {
+      command                = local.command == "[]" ? "null" : local.command
+      cpu                    = var.cpu == 0 ? "null" : var.cpu
+      disableNetworking      = var.disableNetworking ? true : false
+      dnsSearchDomains       = local.dnsSearchDomains == "[]" ? "null" : local.dnsSearchDomains
+      dnsServers             = local.dnsServers == "[]" ? "null" : local.dnsServers
+      dockerLabels           = local.dockerLabels == "{}" ? "null" : local.dockerLabels
+      dockerSecurityOptions  = local.dockerSecurityOptions == "[]" ? "null" : local.dockerSecurityOptions
+      entryPoint             = local.entryPoint == "[]" ? "null" : local.entryPoint
+      environment            = local.environment == "[]" ? "null" : local.environment
+      essential              = var.essential ? true : false
+      extraHosts             = local.extraHosts == "[]" ? "null" : local.extraHosts
+      healthCheck            = local.healthCheck == "{}" ? "null" : local.healthCheck
+      hostname               = var.hostname == "" ? "null" : var.hostname
+      image                  = var.image == "" ? "null" : var.image
+      interactive            = var.interactive ? true : false
+      links                  = local.links == "[]" ? "null" : local.links
+      linuxParameters        = local.linuxParameters == "{}" ? "null" : local.linuxParameters
+      logConfiguration       = local.logConfiguration == "{}" ? "null" : local.logConfiguration
+      memory                 = var.memory == 0 ? "null" : var.memory
+      memoryReservation      = var.memoryReservation == 0 ? "null" : var.memoryReservation
+      mountPoints            = local.mountPoints == "[]" ? "null" : local.mountPoints
+      name                   = var.name == "" ? "null" : var.name
+      portMappings           = local.portMappings == "[]" ? "null" : local.portMappings
+      privileged             = var.privileged ? true : false
+      pseudoTerminal         = var.pseudoTerminal ? true : false
+      readonlyRootFilesystem = var.readonlyRootFilesystem ? true : false
+      repositoryCredentials  = local.repositoryCredentials == "{}" ? "null" : local.repositoryCredentials
+      resourceRequirements   = local.resourceRequirements == "[]" ? "null" : local.resourceRequirements
+      secrets                = local.secrets == "[]" ? "null" : local.secrets
+      systemControls         = local.systemControls == "[]" ? "null" : local.systemControls
+      ulimits                = local.ulimits == "[]" ? "null" : local.ulimits
+      user                   = var.user == "" ? "null" : var.user
+      volumesFrom            = local.volumesFrom == "[]" ? "null" : local.volumesFrom
+      workingDirectory       = var.workingDirectory == "" ? "null" : var.workingDirectory
+    }
+  )
 }
 
 resource "aws_ecs_task_definition" "ecs_task_definition" {
