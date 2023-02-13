@@ -49,9 +49,9 @@ variable "entryPoint" {
 }
 
 variable "environment" {
-  default     = []
+  default     = {}
   description = "The environment variables to pass to a container"
-  type        = list(map(string))
+  type        = map(string)
 }
 
 variable "essential" {
@@ -145,7 +145,7 @@ variable "name" {
 }
 
 variable "network_mode" {
-  default     = "bridge"
+  default     = "awsvpc"
   description = "The Docker networking mode to use for the containers in the task"
 }
 
@@ -164,7 +164,7 @@ variable "placement_constraints" {
 }
 
 variable "portMappings" {
-  default     = []
+  default     = [{ containerPort = 80 }]
   description = "The list of port mappings for the container"
   type        = list(any)
 }
@@ -196,7 +196,7 @@ variable "repositoryCredentials" {
 }
 
 variable "requires_compatibilities" {
-  default     = []
+  default     = ["FARGATE"]
   description = "The launch type required by the task"
   type        = list(string)
 }
