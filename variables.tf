@@ -207,6 +207,15 @@ variable "resourceRequirements" {
   type        = list(string)
 }
 
+variable "runtime_platform" {
+  default = {}
+  description = "Runtime platform (operating system family and CPU architecture) to use by the task"
+  type = object({
+    operating_system_family = optional(string, "LINUX")
+    cpu_architecture       = optional(string, "X86_64")
+  })
+}
+
 variable "secrets" {
   default     = []
   description = "The secrets to pass to the container"
