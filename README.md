@@ -2,9 +2,9 @@
 
 > A Terraform module for creating Amazon [ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
 
-## Repository Archived
+## No Longer Supported
 
-**This repository will be archived soon and is no longer actively maintained. Please refer to our supported Terraform modules at [terraform-mongodbatlas-modules](https://github.com/terraform-mongodbatlas-modules).**
+**This module is no longer supported. Please refer to our supported Terraform modules at [terraform-mongodbatlas-modules](https://github.com/terraform-mongodbatlas-modules).**
 
 ## NOTICE
 
